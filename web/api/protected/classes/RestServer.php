@@ -594,7 +594,7 @@ class RestException extends Exception
 
 	public function __construct($code, $message = null)
 	{
-		parent::__construct($message, $code);
+		parent::__construct(trim($message), $code);
 	}
 
 }

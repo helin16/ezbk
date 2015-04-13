@@ -10,8 +10,9 @@ class Web
 	public static function autoload($className)
 	{
 		$autoloadPaths = array(
-			dirname(__FILE__) . '/classes/',
-			dirname(__FILE__) . '/controllers/',
+			dirname(__FILE__) . '/protected/',
+			dirname(__FILE__) . '/protected/classes/',
+			dirname(__FILE__) . '/protected/controllers/',
 		);
 
 		$found = false;
@@ -32,6 +33,6 @@ class Web
 spl_autoload_register(array('Web','autoload'));
 
 // Bootstrap the core for its autoloader settings
-require(dirname(__FILE__) . '/../core/main/bootstrap.php');
+require(dirname(__FILE__) . '/../../core/main/bootstrap.php');
 
 ?>
