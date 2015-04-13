@@ -1,6 +1,3 @@
-/**
- *
- */
 (function() {
-	var app = angular.module('userController', []);
+	var app = angular
 })();
