@@ -53,4 +53,16 @@ abstract class ControllerAbstract
     		throw new RestException(400, 'Invalid entity: ' . $id);
     	return $entity->setActive(false)->save()->getJson();
     }
+    /**
+     * Returns a JSON string object to the browser when hitting the root of the domain
+     *
+     * @url GET /$id
+     */
+    public function get($id = null) {
+    	if(!class_exists($className = trim($this->_entityClass)))
+    		throw new RestException(400, 'Invalid class: ' . $className);
+    	if(($id = trim($id)) === '' || !($entity = $className::get($id)))
+    		throw new RestException(400, 'Invalid entity: ' . $id);
+    	return $entity->getJson(); // serializes object into JSON
+    }
 }
