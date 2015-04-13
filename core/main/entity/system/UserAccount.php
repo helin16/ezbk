@@ -122,14 +122,13 @@ class UserAccount extends ConfirmEntityAbstract
      * (non-PHPdoc)
      * @see BaseEntityAbstract::getJson()
      */
-    public function getJson($extra = '', $reset = false)
+    public function getJson($extra = array(), $reset = false)
     {
-    	$array = array();
     	if(!$this->isJsonLoaded($reset))
     	{
-    		$array['person'] = $this->getPerson()->getJson();
+    		$extra['person'] = $this->getPerson()->getJson();
     	}
-    	return parent::getJson($array, $reset);
+    	return parent::getJson($extra, $reset);
     }
     /**
      * (non-PHPdoc)

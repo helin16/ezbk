@@ -1,13 +1,8 @@
 <?php
 class UserAccountController extends ControllerAbstract
 {
-	/**
-	 * Returns a JSON string object to the browser when hitting the root of the domain
-	 *
-	 * @url GET /all
-	 */
-	public function getUsers() {
-		return 'getUsers';
+	public function __construct($entityClass) {
+		parent::__construct('UserAccount');
 	}
 	/**
 	 * Returns a JSON string object to the browser when hitting the root of the domain
