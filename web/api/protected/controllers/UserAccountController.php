@@ -10,7 +10,7 @@ class UserAccountController extends ControllerAbstract
      * @url GET /current
 	 */
 	public function getUser($id = null) {
-        return Core::getUser() instanceof UserAccount ? Core::getUser()->getJson() : array(); // serializes object into JSON
+		return Core::getUser() instanceof UserAccount ? Core::getUser()->getJson() : array(); // serializes object into JSON
 	}
 	/**
      * Logs in a user with the given username and password POSTed. Though true
@@ -19,9 +19,10 @@ class UserAccountController extends ControllerAbstract
      * @url POST /login
      */
     public function login() {
-        if(!isset($_POST['username']) || ($username = trim($_POST['username'])) === '');
+    	$params = json_decode(file_get_contents('php://input'),true);
+        if(!isset($params['username']) || ($username = trim($params['username'])) === '')
         	throw new RestException(400, 'Invalid username provided');
-        if(!isset($_POST['password']) || ($password = trim($_POST['password'])) === '');
+        if(!isset($params['password']) || ($password = trim($params['password'])) === '')
         	throw new RestException(400, 'Invalid password provided');
         $user = UserAccount::getUserByUsernameAndPassword($username, $password);
         if(!$user instanceof UserAccount)

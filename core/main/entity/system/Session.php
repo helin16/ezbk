@@ -85,13 +85,31 @@ class Session extends BaseEntityAbstract
 		DaoMap::commit();
 	}
 	/**
+	 * init a session
+	 *
+	 * @return bool
+	 */
+	public function open()
+	{
+		return true;
+	}
+	/**
+	 * close a session
+	 *
+	 * @return bool
+	 */
+	public function close()
+	{
+		return true;
+	}
+	/**
 	 * Getting the Session Data
 	 *
 	 * @param string $sessionId The sesison ID
 	 *
 	 * @return string
 	 */
-	public static function read($sessionId)
+	public function read($sessionId)
 	{
 		$session = self::getSession($sessionId);
 		return ($session instanceof Session ? $session->getData() : '');
@@ -104,7 +122,7 @@ class Session extends BaseEntityAbstract
 	 *
 	 * @return Session|null
 	 */
-	public static function write($sessionId, $sessionData)
+	public function write($sessionId, $sessionData)
 	{
 		$user = (($user = Core::getUser()) instanceof UserAccount ? $user : UserAccount::get(UserAccount::ID_GUEST_ACCOUNT));
 		Core::setUser($user, Core::getRole(), Core::getOrganization());
@@ -115,13 +133,13 @@ class Session extends BaseEntityAbstract
 		return $session;
 	}
 	/**
-	 * Writting the Session Data
+	 * destroy the Session Data
 	 *
 	 * @param string $sessionId The sesison ID
 	 *
 	 * @return bool
 	 */
-	public static function delete($sessionId)
+	public function destroy($sessionId)
 	{
 		self::deleteByCriteria('`key` = ?', array($sessionId));
 		return true;
@@ -133,7 +151,7 @@ class Session extends BaseEntityAbstract
 	 *
 	 * @return bool
 	 */
-	public static function cleanUp($maxTimeOut)
+	public function cleanUp($maxTimeOut)
 	{
 		$now = new UDate();
 		$now->modify('-' . $maxTimeOut . ' second');
