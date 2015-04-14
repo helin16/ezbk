@@ -1,7 +1,7 @@
 <?php
 class UserAccountController extends ControllerAbstract
 {
-	public function __construct($entityClass) {
+	public function __construct() {
 		parent::__construct('UserAccount');
 	}
 	/**
