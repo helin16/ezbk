@@ -11,7 +11,6 @@ try {
 		array($session, 'destroy'),
 		array($session, 'cleanUp')
 	);
-
 	$mode = 'debug'; // 'debug' or 'production'
 	$server = new RestServer($mode);
 	if(isset($_SESSION['app']))

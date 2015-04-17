@@ -1,23 +1,24 @@
-<div class="row login-panel login-page-panel">
+<script src="/app/controllers/LoginController.js"></script>
+<div class="row login-panel login-page-panel" ng-controller="LoginController as panel">
 	<div class="col-sm-6 col-sm-push-3">
-		<form class="login-form" role="form">
+		<form class="login-form" role="form" novalidate>
 			<div class="panel-body">
 				<h4 class="form-signin-heading">Please Login:</h4>
 				<div class="form-group" title="Your email address">
 					<div class="input-group">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-						<input login-panel="email" name="login_email" type="email" class="form-control login-form login-page-form" placeholder="Your email">
+						<input name="login_email" type="email" class="form-control" placeholder="Your email" ng-model="panel.user.username" required autofocus>
 					</div>
 				</div>
 				<div class="form-group has-feedback" title="Your password">
 					<div class="input-group">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-						<input login-panel="password" name="login_pass" type="password" class="form-control login-form login-page-form" placeholder="Password">
+						<input name="login_pass" type="password" class="form-control" placeholder="Password" ng-model="panel.user.password" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<a href="javascript: void(0)" ng-click="alert('tyre');">Forgot Password?</a>
-					<button id="loginbtn" class="btn btn-md btn-primary pull-right col-sm-4" type="submit" data-loading-text="Signing in...">Sign in</button>
+					<span class="btn btn-md btn-primary pull-right col-sm-4" ng-click="panel.login(panel.user);">Sign in</span>
 				</div>
 			</div>
 		</form>
