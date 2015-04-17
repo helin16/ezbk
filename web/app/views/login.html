@@ -1,5 +1,4 @@
-<script src="/app/controllers/LoginController.js"></script>
-<div class="row login-panel login-page-panel" ng-controller="LoginController as panel">
+<div class="row login-panel login-page-panel">
 	<div class="col-sm-6 col-sm-push-3">
 		<form class="login-form" role="form" novalidate>
 			<div class="panel-body">
@@ -7,18 +6,18 @@
 				<div class="form-group" title="Your email address">
 					<div class="input-group">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-						<input name="login_email" type="email" class="form-control" placeholder="Your email" ng-model="panel.user.username" required autofocus>
+						<input name="login_email" type="email" class="form-control" placeholder="Your email" required autofocus>
 					</div>
 				</div>
 				<div class="form-group has-feedback" title="Your password">
 					<div class="input-group">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-						<input name="login_pass" type="password" class="form-control" placeholder="Password" ng-model="panel.user.password" required>
+						<input name="login_pass" type="password" class="form-control" placeholder="Password" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<a href="javascript: void(0)" ng-click="alert('tyre');">Forgot Password?</a>
-					<span class="btn btn-md btn-primary pull-right col-sm-4" ng-click="panel.login(panel.user);">Sign in</span>
+					<span class="btn btn-md btn-primary pull-right col-sm-4">Sign in</span>
 				</div>
 			</div>
 		</form>
