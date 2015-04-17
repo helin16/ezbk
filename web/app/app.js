@@ -31,5 +31,21 @@
 	        });
 		}])
 		
-		.controller('LoginController', ['$http', function($http)])
+		.controller('LoginController', ['API_BASE', '$http', '$rootScope', '$location', function(API_BASE, $http, $rootScope, $location) {
+			var ctrl = this;
+			ctrl.user = {};
+			ctrl.login = function(user){
+				$http.post( API_BASE + 'users/login', user)
+					.success(function(data){
+						ctrl.errMsg = '';
+					})
+					.error(function(data){
+						ctrl.errMsg = data.error.message;
+					})
+					.finally(function(data){
+		                $location.path('/');
+					});
+			}
+			return ctrl;
+		}])
 })();
